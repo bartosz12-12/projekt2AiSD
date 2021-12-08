@@ -96,3 +96,21 @@ class BinaryTree:
 
 def visit(node: BinaryNode):
     print(node.value)
+
+def all_path(tr:BinaryNode):
+    wynik = [[]]
+    x = []
+    root = tr.root
+    stos = deque()
+    stos.append(root, x)
+    while stos:
+        x,node = stos.pop()
+        x.append(node)
+        if node.right_child:
+            stos.append((node.right_child,list(x)))
+        if node.left_child:
+            stos.append((node.left_child,list(path)))
+        if node.is_leaf():
+            wynik.append(list(path))
+    return wynik
+
